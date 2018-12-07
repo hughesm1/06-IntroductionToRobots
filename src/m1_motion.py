@@ -2,11 +2,11 @@
 An opportunity to explore how to make an EV3 Robot move.
 
 Authors: Dave Fisher, David Mutchler, Vibha Alangar,
-their colleagues, and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+their colleagues, and Marcus Hughes-Oliver.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 # -----------------------------------------------------------------------------
-# TODO: 2.
+# DONE: 2.
 #   Follow along with the lecture to run this program:
 #    - Using SSH from your computer
 #   When you have successfully run this program, change this _TODO_ to DONE.
@@ -18,11 +18,13 @@ import time
 def main():
     """ Calls the other functions to test/demo them. """
     go_two_seconds()
+    run_test_go_inches()
+
 
 
 def go_two_seconds():
     # -------------------------------------------------------------------------
-    # TODO: 3.
+    # DONE: 3.
     #   Make the robot move, by using this pattern:
     #    - Turn on (start) the wheel motors.
     #    - time.sleep(2)  # Pause here, let other processes run for 2 seconds
@@ -38,8 +40,10 @@ def go_two_seconds():
 
 def run_test_go_inches():
     """ Tests the go_inches function. """
-    # TODO: 4.  Implement this function with at least 3 calls to go_inches
+    # DONE: 4.  Implement this function with at least 3 calls to go_inches
     #   with various inches and speeds.
+
+    go_inches(4, 30)
 
 
 def go_inches(inches, percent_of_max_speed):
@@ -49,7 +53,15 @@ def go_inches(inches, percent_of_max_speed):
       :type inches: float
       :type percent_of_max_speed: float  -100 to 100
     """
-    # TODO: 5.  Implement and test this function.
-
+    # DONE: 5.  Implement and test this function.
+    left_motor = rb.LargeMotor(rb.Plug("B"))
+    left_motor.start()
+    right_motor = rb.LargeMotor(rb.Plug("C"))
+    right_motor.start()
+    left_motor.speed_percent(percent_of_max_speed)
+    right_motor.speed_percent(percent_of_max_speed)
+    time.sleep(inches)
+    left_motor.brake()
+    right_motor.brake()
 
 main()
